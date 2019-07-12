@@ -15,6 +15,8 @@ open class ISPageControl: UIControl {
     fileprivate var diameter: CGFloat { return radius * 2 }
     fileprivate var centerIndex: Int { return fullScaleIndex[1] }
     
+    open var isStepperMode: Bool = false
+    
     open var currentPage = 0 {
         didSet {
             guard numberOfPages > currentPage else {
