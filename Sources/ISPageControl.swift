@@ -192,7 +192,11 @@ private extension ISPageControl {
     
     func update() {
         dotLayers.enumerated().forEach() {
-            $0.element.backgroundColor = $0.offset == currentPage ? currentPageTintColor.cgColor : inactiveTintColor.withAlphaComponent(inactiveTransparency).cgColor
+            if isStepperMode {
+                $0.element.backgroundColor = $0.offset <= currentPage ? currentPageTintColor.cgColor : inactiveTintColor.withAlphaComponent(inactiveTransparency).cgColor
+            } else {
+                $0.element.backgroundColor = $0.offset == currentPage ? currentPageTintColor.cgColor : inactiveTintColor.withAlphaComponent(inactiveTransparency).cgColor
+            }
         }
         
         guard numberOfPages > limit else {
